@@ -1,9 +1,47 @@
 import maquina.*
 
 describe "group of tests ..." {
-
-  test "test 1 ..." {
-    assert.that(true)
+  test "algun dia se registro una produccion de 49 piezas" {
+    assert.that(maquina.algunDiaSeProdujo(49))
+    
+  }
+  test "no hay registro de la produccion de 52 piezas" {
+    assert.that(not maquina.algunDiaSeProdujo(52))
   }
 
+  test "la maxima produccion de piezas fue de 62" {
+    assert.equals(62, maquina.maximoValorDeProduccion())
+  }
+
+  test "las producciones pares son de 62 y 18" {
+    assert.that(maquina.valoresDeProduccionPares().contains(18))
+    assert.that(maquina.valoresDeProduccionPares().contains(62))
+  }
+
+  test "la produccion es acotada entre 10 y 100" {
+    assert.that(maquina.produccionEsAcotada(10,100))
+  }
+  test "la produccion no es acotada entre 20 y 100, (porque 18 no está en el rango)" {
+    assert.that( not maquina.produccionEsAcotada(20,100))
+  }
+
+  // test "hay numeros de produccion superiores a 35" {
+  //   // assert.equals([43,49,38,62], maquina.produccionesSuperioresA(35) )
+  //   assert.that(maquina.produccionesSuperioresA(35).contains(43))
+  //   assert.that(maquina.produccionesSuperioresA(35).contains(49))
+  //   assert.that(maquina.produccionesSuperioresA(35).contains(38))
+  //   assert.that(maquina.produccionesSuperioresA(35).contains(62))
+  // }
+
+  test "el total producido es de 244" {
+    assert.equals(244, maquina.totalProducido())
+  }
+
+  test "el ultimo valor del la produccion es de 39" {
+    assert.equals(39, maquina.ultimoValorDeProduccion())
+  }
+
+  test "los valore de produccion mayores al primer valor de produccion son 49 y 62" {
+    assert.equals([49,62], maquina.cantidadProduccionesMayorALaPrimera())
+  }
 }
